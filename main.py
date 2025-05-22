@@ -20,7 +20,3 @@ async def check_name(data: NameInput):
     prediction = model.predict(vectorized_name)[0]
     confidence = model.predict_proba(vectorized_name)[0][prediction]
     return {"valid": bool(prediction), "confidence": float(confidence)}
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Railway sets PORT env variable
-    uvicorn.run(app, host="0.0.0.0", port=port)
